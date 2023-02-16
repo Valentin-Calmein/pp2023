@@ -11,4 +11,4 @@ Student Info
 
 * Student Name: Valentin CALMEIN 
 * Student ID: E22.BA.ICT.002
-
+* Group: G1
