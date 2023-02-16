@@ -32,7 +32,7 @@ listidcourse=[]
 listnamecourse=[]
 for i in range (nbcourses):
     print("courses n°",i+1," : ")
-    idcourse=input("what is the coruse's id : ")
+    idcourse=input("what is the course's id : ")
     listidcourse.append(idcourse)
     namecourse=input("what is the name of the course : ")
     listnamecourse.append(namecourse)
@@ -46,4 +46,35 @@ for i in listnamecourse:
         print("what is the marks for",x," : ")
         marks=input("")
         listmarks.append(marks)
+        
+#print fonction
+choice=0
+while choice!=2:
+    print("\n what do you want to do?")
+    while True:
+        choice=int(input("1-Show student marks for a given course \n2-Exit : "))
+        if choice==1 or choice==2:
+            break
+        else:
+            print("please, choose between 1 or 2")
+#show marks for one course
+    if choice==1:
+        print("witch course do you want ?\n",listnamecourse)
+        course=int(input("choose a number (1 for 1st, 2 for 2nd...): "))
+        for i in range (len(listnamecourse)):
+            if course==i:
+                print("\nin",listnamecourse[i],"...")
+                start=(course-1)*len(listnamecourse)
+                end=len(listnamestudent)
+                listmark=[]
+                for i in range(start,end):
+                    listmark.append(listmarks[i])
+                for i in range (len(listmark)):
+                    print(listnamestudent[i],"have",listmark[i])
+        print("\nbye")
+                
+ #exit                    
+    elif choice==2:
+        print("\nThank you bye\n")
+        break
         
