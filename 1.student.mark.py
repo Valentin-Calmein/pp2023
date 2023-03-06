@@ -1,9 +1,10 @@
+
 #number of student
 while True:
     try:
         nbstudent=int(input("How many student do they Have : "))
         break
-    except:
+    except ValueError:
         print("number of student unvailable")
 
 #student infromation 
