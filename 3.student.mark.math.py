@@ -1,3 +1,5 @@
+from math import *
+import numpy as np
 #data
 students=[]
 courses=[]
@@ -11,9 +13,10 @@ class Students:
         self.dob= dob
              
 class Courses:
-    def __init__(self,nameCourse,idCourse):
+    def __init__(self,nameCourse,idCourse,credits):
         self.nameCourse= nameCourse
         self.idCourse= idCourse
+        self.credits=credits
 
 class Marks :
     def enterMarks(self):
@@ -24,7 +27,7 @@ class Marks :
             x=0
             for obj in students:
                 print("what is the marks for",students[x].name," : ")
-                mark=input("")
+                mark=floor(int(input(""))*10)/10
                 marks.append(mark)
                 x+=1
     def showMarks(self):
@@ -34,6 +37,10 @@ class Marks :
             for i in range(len(students)):
                 print(f"Student {students[i].name} has mark {marks[n]}")
                 n+=1
+    def gpa(self):
+        for i in range (len(students)):
+            for obj in courses:
+                calculGpa=
 
 #enter student infos
 nbStudents=int(input("Enter number of students : "))
@@ -48,7 +55,8 @@ nbCourses=int(input("Enter number of Courses : "))
 for i in range(nbCourses):
     nameCourse=input("Name of course : ")
     idCourse=input("Id of course : ")
-    courses+=[Courses(nameCourse,idStudent)]
+    credits=floor(((int(input("Enter number total of hours for this coruse :  ")))/15)*10)/10
+    courses+=[Courses(nameCourse,idCourse,credits)]
 
 #enter course mark
 allMarks= Marks()
@@ -62,7 +70,7 @@ for obj in students:
 #show list courses
 print("\nListing courses :")
 for obj in courses:
-    print(obj.nameCourse, obj.idCourse, sep=' / ')
+    print(obj.nameCourse, obj.idCourse, obj.credits , sep=' / ')
     
 #show course Marks
 allMarks.showMarks()
