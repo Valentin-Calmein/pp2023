@@ -4,6 +4,7 @@ import numpy as np
 students=[]
 courses=[]
 marks=[]
+gpas=[]
 
 #class functions
 class Students:
@@ -38,10 +39,24 @@ class Marks :
                 print(f"Student {students[i].name} has mark {marks[n]}")
                 n+=1
     def gpa(self):
+        n=0
+        m=0
+        newlistMarks=[]
         for i in range (len(students)):
-            for obj in courses:
-                calculGpa=
-
+            print("\nthe student ",students[i].name,"has mark :")
+            n=m
+            m+=1
+            for i in range(len(courses)):
+                print(f"in {courses[i].nameCourse} {marks[n]}")
+                newlistMarks.append(marks[n])
+                n+=len(students)
+        for y in range(len(students)):
+            calculGpa=0
+            for i in range(len(courses)):
+                calculGpa+=(newlistMarks[i*(y+1)])*courses[i].credits
+            calculGpa=calculGpa/totalcredits
+            print(f"Students {students[y].name} has a GPA of {floor(calculGpa*10)/10} ")
+                
 #enter student infos
 nbStudents=int(input("Enter number of students : "))
 for i in range(nbStudents):
@@ -51,11 +66,13 @@ for i in range(nbStudents):
     students+=[Students(nameStudent,idStudent,dobStudent)]
     
 #enter course infos
+totalcredits=0
 nbCourses=int(input("Enter number of Courses : "))
 for i in range(nbCourses):
     nameCourse=input("Name of course : ")
     idCourse=input("Id of course : ")
     credits=floor(((int(input("Enter number total of hours for this coruse :  ")))/15)*10)/10
+    totalcredits+=credits
     courses+=[Courses(nameCourse,idCourse,credits)]
 
 #enter course mark
@@ -72,5 +89,7 @@ print("\nListing courses :")
 for obj in courses:
     print(obj.nameCourse, obj.idCourse, obj.credits , sep=' / ')
     
-#show course Marks
+#show course Marks ang gpa
+print("")
 allMarks.showMarks()
+allMarks.gpa()
