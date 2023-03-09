@@ -1,10 +1,9 @@
+#data
 from math import *
 import numpy as np
-#data
 students=[]
 courses=[]
 marks=[]
-gpas=[]
 
 #class functions
 class Students:
@@ -39,6 +38,7 @@ class Marks :
                 print(f"Student {students[i].name} has mark {marks[n]}")
                 n+=1
     def gpa(self):
+        Arr=np.array([])
         n=0
         m=0
         newlistMarks=[]
@@ -55,8 +55,12 @@ class Marks :
             for i in range(len(courses)):
                 calculGpa+=(newlistMarks[i*(y+1)])*courses[i].credits
             calculGpa=calculGpa/totalcredits
+            #ArrayGpa=np.append(ArrayGpa,students[y].name)
+            Arr=np.append(Arr,int(floor(calculGpa*10)/10))
             print(f"Students {students[y].name} has a GPA of {floor(calculGpa*10)/10} ")
-                
+        Arr=np.sort(Arr,axis=0)
+        print(f"this is the list of gpa descending : {Arr}")    
+            
 #enter student infos
 nbStudents=int(input("Enter number of students : "))
 for i in range(nbStudents):
@@ -71,7 +75,7 @@ nbCourses=int(input("Enter number of Courses : "))
 for i in range(nbCourses):
     nameCourse=input("Name of course : ")
     idCourse=input("Id of course : ")
-    credits=floor(((int(input("Enter number total of hours for this coruse :  ")))/15)*10)/10
+    credits=floor(((int(input("Enter number total of hours for this course :  ")))/15)*10)/10
     totalcredits+=credits
     courses+=[Courses(nameCourse,idCourse,credits)]
 
