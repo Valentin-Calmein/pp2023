@@ -1,9 +1,10 @@
+#please run file output
 from math import *
 import numpy as np
 students=[]
 courses=[]
 marks=[]
-totalcredits=0
+
 
 #class functions
 class Students:
@@ -30,6 +31,7 @@ class Marks :
                 mark=floor(int(input(""))*10)/10
                 marks.append(mark)
                 x+=1
+                
     def showMarks(self):
         n=0
         for i in range (len(courses)):
@@ -41,9 +43,10 @@ class Marks :
         Arr=np.array([])
         n=0
         m=0
+        totalcredits=0
         newlistMarks=[]
         for i in range (len(students)):
-            print("\nthe student ",students[i].name,"has mark :")
+            print("\nthe student",students[i].name,"has mark :")
             n=m
             m+=1
             for i in range(len(courses)):
@@ -54,46 +57,9 @@ class Marks :
             calculGpa=0
             for i in range(len(courses)):
                 calculGpa+=(newlistMarks[i*(y+1)])*courses[i].credits
+                totalcredits+=courses[i].credits
             calculGpa=calculGpa/totalcredits
-            #ArrayGpa=np.append(ArrayGpa,students[y].name)
             Arr=np.append(Arr,int(floor(calculGpa*10)/10))
             print(f"Students {students[y].name} has a GPA of {floor(calculGpa*10)/10} ")
         Arr=np.sort(Arr,axis=0)
-        print(f"\nThis is the list of gpa descending : {Arr}")    
-            
-#enter student infos
-nbStudents=int(input("Enter number of students : "))
-for i in range(nbStudents):
-    nameStudent=input("Name of student : ")
-    idStudent=input("Id of student : ")
-    dobStudent=input("dob of student : ")
-    students+=[Students(nameStudent,idStudent,dobStudent)]
-    
-#enter course infos
-
-nbCourses=int(input("Enter number of Courses : "))
-for i in range(nbCourses):
-    nameCourse=input("Name of course : ")
-    idCourse=input("Id of course : ")
-    credits=floor(((int(input("Enter number total of hours for this course :  ")))/15)*10)/10
-    totalcredits+=credits
-    courses+=[Courses(nameCourse,idCourse,credits)]
-
-#enter course mark
-allMarks= Marks()
-allMarks.enterMarks()
-        
-#show list students
-print("\nListing students :")
-for obj in students:
-    print(obj.name, obj.id, obj.dob, sep=' / ')
-
-#show list courses
-print("\nListing courses :")
-for obj in courses:
-    print(obj.nameCourse, obj.idCourse, obj.credits , sep=' / ')
-    
-#show course Marks ang gpa
-print("")
-allMarks.showMarks()
-allMarks.gpa()
+        print(f"\nThis is the list of gpa descending : {Arr}")
