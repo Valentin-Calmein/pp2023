@@ -1,10 +1,10 @@
-#please run file output
+#please run file : output
 from math import *
 import numpy as np
+import os
 students=[]
 courses=[]
 marks=[]
-
 
 #class functions
 class Students:
@@ -19,7 +19,7 @@ class Courses:
         self.idCourse= idCourse
         self.credits=credits
 
-class Marks :
+class Marks:
     def enterMarks(self):
         i=0
         for obj in courses:
@@ -30,6 +30,9 @@ class Marks :
                 print("what is the marks for",students[x].name," : ")
                 mark=floor(int(input(""))*10)/10
                 marks.append(mark)
+                with open ("marks.txt","a") as fileMarks:
+                    fileMarks.write(str(students[x].name)+" in "+str(courses[i-1].nameCourse)+": "+str(mark)+",\n")
+                    fileMarks.close()
                 x+=1
                 
     def showMarks(self):
@@ -59,7 +62,7 @@ class Marks :
                 calculGpa+=(newlistMarks[i*(y+1)])*courses[i].credits
                 totalcredits+=courses[i].credits
             calculGpa=calculGpa/totalcredits
-            Arr=np.append(Arr,int(floor(calculGpa*10)/10))
+            Arr=np.append(Arr,floor(calculGpa*10)/10)
             print(f"Students {students[y].name} has a GPA of {floor(calculGpa*10)/10} ")
         Arr=np.sort(Arr,axis=0)
         print(f"\nThis is the list of gpa descending : {Arr}")
