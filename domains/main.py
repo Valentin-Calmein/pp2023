@@ -1,4 +1,5 @@
 #please run file : output
+#data
 from math import *
 import numpy as np
 import os

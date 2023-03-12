@@ -1,4 +1,5 @@
 ###please run this file###
+#data
 from math import *
 import numpy as np
 import curses
@@ -6,8 +7,10 @@ from curses import wrapper
 from curses.textpad import Textbox, rectangle
 from input import *
 from time import *
-import os
+from pickle import *
 
+
+#loading display
 def main(stdscr):
     curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
     curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
@@ -34,6 +37,7 @@ def main(stdscr):
     curses.endwin()
 
 wrapper(main)
+
 print("-------------------")
 #show list students
 print("\nListing students :")

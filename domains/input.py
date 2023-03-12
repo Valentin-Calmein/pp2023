@@ -1,4 +1,5 @@
 #please run file : output
+#data
 from math import *
 import numpy as np
 from main import *
@@ -6,6 +7,7 @@ import curses
 from curses import wrapper
 from curses.textpad import Textbox, rectangle
 
+#homepage
 def Main(stdscr):
     curses.init_pair(1, curses.COLOR_BLUE, curses.COLOR_BLACK)
     curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
@@ -25,13 +27,13 @@ def Main(stdscr):
 wrapper(Main)
 
 #enter student infos
-
 nbStudents=int(input("Enter number of students : "))
 for i in range(nbStudents):
     nameStudent=input("Name of student : ")
     idStudent=input("Id of student : ")
     dobStudent=input("dob of student : ")
     
+#check id students already exists
     list=[nameStudent,idStudent,dobStudent]
     fileStudents= open ("students.txt","r") 
     nbStudents=len(fileStudents.readlines()) 
@@ -63,6 +65,7 @@ for i in range(nbCourses):
     idCourse=input("Id of course : ")
     credits=floor(((int(input("Enter number total of hours for this course :  ")))/15)*10)/10
     
+#check id courses already exists
     list=[nameCourse,idCourse,credits]
     fileCourses= open ("courses.txt","r") 
     nbCourses=len(fileCourses.readlines()) 
