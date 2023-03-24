@@ -2,6 +2,8 @@
 #data
 from math import *
 import numpy as np
+import threading
+import time
 import os
 import pickle
 students=[]
@@ -44,6 +46,7 @@ class Marks:
             for i in range(len(students)):
                 print(f"Student {students[i].name} has mark {marks[n]}")
                 n+=1
+                
     def gpa(self):
         Arr=np.array([])
         n=0
@@ -68,3 +71,12 @@ class Marks:
             print(f"Students {students[y].name} has a GPA of {floor(calculGpa*10)/10} ")
         Arr=np.sort(Arr,axis=0)
         print(f"\nThis is the list of gpa descending : {Arr}")
+        
+class BackgroundThread(threading.Thread):
+    def __init__(self, sleepTime):
+        threading.Thread.__init__(self)
+        self.__sleepTime = sleepTime
+        
+    def run(self):
+        time.sleep(self.__sleepTime)
+        print(f"Finished sleeping {self.__sleepTime}s")

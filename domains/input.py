@@ -37,6 +37,11 @@ for i in range(nbStudents):
             fileStudents.close()
     
     students+=[Students(nameStudent,idStudent,dobStudent)]
+backgroundThread = BackgroundThread(3)
+backgroundThread.start() 
+print("Creation of the student list...")
+backgroundThread.join()
+
 
 #enter course infos
 while True:
@@ -55,7 +60,7 @@ for i in range(nbCourses):
             print("Error, please select a correct number")
         else:
             break
-    
+
 #check id courses already exists
     list=[nameCourse,idCourse,credits]
     fileCourses= open ("courses.txt","r") 
@@ -78,6 +83,11 @@ for i in range(nbCourses):
             fileCourses.write("\n")
             fileCourses.close()
     courses+=[Courses(nameCourse,idCourse,credits)]
+  
+backgroundThread = BackgroundThread(3)
+backgroundThread.start() 
+print("Creation of the course list...")
+backgroundThread.join()
     
 #enter course mark
 allMarks= Marks()
